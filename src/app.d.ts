@@ -1,6 +1,11 @@
 // See https://svelte.dev/docs/kit/types#app.d.ts
 // for information about these interfaces
 declare global {
+	// for dark mode
+	interface Window {
+		toggleTheme?(): void;
+	}
+
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
