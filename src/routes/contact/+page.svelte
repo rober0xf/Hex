@@ -4,6 +4,10 @@
 
 <h1 class="text-6xl">Contact me</h1>
 
+<svelte:head>
+    <title>Contact</title>
+</svelte:head>
+
 <p>the best way to get in touch is through discord</p>
 
 <Button
