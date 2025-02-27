@@ -17,7 +17,6 @@
 		}}
 		href="/discord">follow on discord</Button
 	>
-	>
 	<p>you can follow us on:</p>
 
 	<ul class="flex flex-col gap-4 py-4">
