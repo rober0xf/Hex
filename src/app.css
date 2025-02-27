@@ -109,4 +109,58 @@
 	.stack > * {
 		grid-area: stack;
 	}
+
+	/* view transition */
+	body {
+		view-transition-name: body;
+	}
+
+	@keyframes fade-out-to-left {
+		to {
+			opacity: 0%;
+			transform: translateX(-100%);
+		}
+	}
+
+	@keyframes slide-from-right {
+		from {
+			transform: translateX(100%);
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		:root::view-transition-old(body) {
+			pointer-events: none;
+			animation: 300ms ease-out both fade-out-to-left;
+		}
+		:root::view-transition-new(body) {
+			pointer-events: none;
+			animation: 300ms ease-out both slide-from-right;
+		}
+	}
+
+	/* when we go back */
+	@keyframes fade-out-to-right {
+		to {
+			opacity: 0%;
+			transform: translateX(100%);
+		}
+	}
+
+	@keyframes slide-from-left {
+		from {
+			transform: translateX(-100%);
+		}
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		:root[data-back]::view-transition-old(body) {
+			pointer-events: none;
+			animation: 300ms ease-out both fade-out-to-right;
+		}
+		:root[data-back]::view-transition-new(body) {
+			pointer-events: none;
+			animation: 300ms ease-out both slide-from-left;
+		}
+	}
 }
