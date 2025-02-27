@@ -59,27 +59,12 @@ const config: CustomConfig = {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: [
-					'Inter',
-					'ui-sans-serif',
-					'system-ui',
-					'-apple-system',
-					'BlinkMacSystemFont',
-					'Segoe UI',
-					'Roboto',
-					'Helvetica Neue',
-					'Arial',
-					'Noto Sans',
-					'sans-serif',
-					'Apple Color Emoji',
-					'Segoe UI Emoji',
-					'Segoe UI Symbol',
-					'Noto Color Emoji'
-				]
+				sans: ['Work Sans Variable', 'sans-serif'],
+				serif: ['Merriweather', 'serif']
 			},
-      padding: {
-        inline: 'var(--padding-inline)'
-      }
+			padding: {
+				inline: 'var(--padding-inline)'
+			}
 		}
 	}
 };

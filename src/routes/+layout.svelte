@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@fontsource-variable/work-sans';
 	import { onNavigate } from '$app/navigation';
 	import Footer from '@/components/Footer.svelte';
 
@@ -30,6 +31,11 @@
 				});
 			});
 		}
+	});
+
+	$effect(() => {
+		// we have playwright wait for this before starting any test
+		document.documentElement.dataset.testid = 'hydrated';
 	});
 </script>
 

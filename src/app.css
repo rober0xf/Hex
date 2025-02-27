@@ -43,6 +43,7 @@
 	h5,
 	h6 {
 		text-wrap: balance;
+		@apply font-serif font-bold;
 	}
 	p {
 		text-wrap: pretty;
@@ -51,6 +52,7 @@
 	:root {
 		--radius: 0.5rem;
 		--padding-inline: clamp(1rem, 5vw, 3rem);
+		--font-serif: 'Work Sans Variable', sans-serif;
 	}
 
 	:root,

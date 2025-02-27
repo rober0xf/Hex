@@ -4,7 +4,7 @@
 </script>
 
 <header class="flex items-center justify-between px-inline py-2">
-	<Button class="font-bold" variant="ghost" href="/">Hex Fitness</Button>
+	<Button class="font-serif font-bold" variant="ghost" href="/">Hex Fitness</Button>
 	<div>
 		<nav class="flex items-center">
 			<Button variant="ghost" href="/contact">Contact</Button>
