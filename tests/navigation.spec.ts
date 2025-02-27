@@ -3,6 +3,8 @@ import { test, expect } from '@playwright/test';
 test('navigation smoke test', async ({ page }) => {
 	await page.goto('http://localhost:5173');
 
+	// wait for hydration
+
 	await expect(page).toHaveTitle(/Hex/);
 	await expect(page.getByRole('heading', { level: 1, name: 'Hex' })).toBeVisible();
 
@@ -13,4 +15,7 @@ test('navigation smoke test', async ({ page }) => {
 	await headerElemenent.getByRole('link', { name: 'Contact' }).click();
 	await expect(page.getByRole('heading', { level: 1, name: 'Contact' })).toBeVisible();
 	await expect(page).toHaveTitle(/Contact/);
+
+	// toggle theme
+	await headerElemenent.getByRole('button', { name: 'Toggle Theme' }).click();
 });
