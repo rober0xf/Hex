@@ -47,7 +47,6 @@
 		size = 'default',
 		ref = $bindable(null),
 		href = undefined,
-		type = 'button',
 		children,
 		...restProps
 	}: ButtonProps = $props();
@@ -58,12 +57,7 @@
 		{@render children?.()}
 	</a>
 {:else}
-	<button
-		bind:this={ref}
-		class={cn(buttonVariants({ variant, size }), className)}
-		{type}
-		{...restProps}
-	>
+	<button bind:this={ref} class={cn(buttonVariants({ variant, size }), className)} {...restProps}>
 		{@render children?.()}
 	</button>
 {/if}
