@@ -2,15 +2,28 @@
 	import '@fontsource-variable/work-sans';
 	import { onNavigate } from '$app/navigation';
 	import Footer from '@/components/Footer.svelte';
+	import { Toaster } from '$lib/components/ui/sonner/index';
 
 	// what is in this file appear in every page because its the root layout
 	import '../app.css';
 	import Header from '@/components/Header.svelte';
-	let { children } = $props();
+	import { page } from '$app/stores';
 
-	$effect(() => {
-		console.log('layout rendered');
-	});
+	const hardcoded_meta = {
+		title: 'Hex',
+		description: 'Fitness App',
+		og: '/og.png'
+	};
+	let { children } = $props();
+	let title = $derived(
+		$page.data.meta?.title ? `${$page.data.meta?.title} | Hex` : hardcoded_meta.title
+	);
+	let description = $derived(
+		$page.data.meta?.description ? $page.data.meta?.description : hardcoded_meta.description
+	);
+	let ogImageUrl = $derived(
+		`${$page.url.origin}${$page.data.meta?.og ? $page.data.meta?.og : hardcoded_meta.og}`
+	);
 
 	// handles page transitions animation when navigating
 	onNavigate((navigation) => {
@@ -40,11 +53,20 @@
 </script>
 
 <svelte:head>
-	<title>Hex</title>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Hex" />
+	<meta property="og:url" content={$page.url.href} />
+	<meta property="og:image" content={ogImageUrl} />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <Header />
 
 {@render children()}
-
+<!-- message when click sign up -->
+<Toaster />
 <Footer />
