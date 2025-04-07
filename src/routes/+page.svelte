@@ -1,7 +1,13 @@
 <script lang="ts">
-	import { Button } from '@/components/ui/button';
-
+	import Button from '@/components/ui/button/button.svelte';
 	import Hero from './Hero.svelte';
+	import NewsletterForm from './NewsletterForm.svelte';
+	import type { superForm } from 'sveltekit-superforms';
+	import { zod, zodClient } from 'sveltekit-superforms/adapters';
+	import { newsletter_schema } from './schema';
+
+	// it gets the validation from feedback_form. thanks by the PageServerLoad
+	let { data } = $props();
 </script>
 
 <Hero />
@@ -15,4 +21,8 @@
 		}}
 		href="/contact">Contact me</Button
 	>
+</section>
+
+<section>
+	<NewsletterForm data={data.feedback_form}></NewsletterForm>
 </section>
