@@ -1,10 +1,6 @@
-<script>
+<script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 </script>
-
-<svelte:head>
-	<title>Contact</title>
-</svelte:head>
 
 <main class="container">
 	<h1 class="text-6xl">Contact me</h1>
