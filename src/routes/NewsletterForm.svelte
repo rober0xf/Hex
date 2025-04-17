@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Label from '@/components/ui/label/label.svelte';
 	import * as Card from '$lib/components/ui/card/index';
 	import * as Form from '$lib/components/ui/form';
 	import Input from '@/components/ui/input/input.svelte';
@@ -17,11 +16,17 @@
 
 	const form = superForm(data, {
 		validators: zodClient(newsletter_schema),
-		onUpdated: () => {
-			toast.success('thank you for signing up');
-		},
-		onError: (error) => {
-			toast.error('we had a problem signing up');
+		resetForm: false, // when error doesnt reset
+		onUpdated: ({ form: { message } }) => {
+			switch (message?.type) {
+				case 'success':
+					toast.success(message?.text);
+					form.reset();
+					break;
+				case 'error':
+					toast.error(message?.text);
+					break;
+			}
 		}
 	});
 	const { form: formData, enhance, constraints } = form;
@@ -29,7 +34,7 @@
 
 <Card.Root class="mx-auto max-w-prose">
 	<Card.Header>
-		<Card.Title tag="h2" class="text-xl">Sign up for updates</Card.Title>
+		<Card.Title>Sign up for updates</Card.Title>
 		<Card.Description>Get the earliest information</Card.Description>
 	</Card.Header>
 	<form method="post" use:enhance>

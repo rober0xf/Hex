@@ -1,5 +1,4 @@
-import { error } from '@sveltejs/kit';
-import { fail, superValidate } from 'sveltekit-superforms';
+import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { newsletter_schema } from './schema';
 import type { Actions, PageServerLoad } from './$types';
@@ -18,10 +17,12 @@ export const actions: Actions = {
 
 		const { email } = form.data;
 		if (email.includes('error')) {
-			error(500, 'server error');
+			return message(form, { type: 'error', text: 'we had a problem signing up' });
 		}
+
 		console.log('TODO: create a contact for this email:', email);
 
-		return form;
+		// using the app.d.ts custom return
+		return message(form, { type: 'success', text: 'thank you for signing up' });
 	}
 };
